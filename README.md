@@ -2,7 +2,7 @@
 
 *This project is very early in development*
 
-This is a new GUI tool written in Zig with the intention of helping users transfer photos away from popular cloud providers, like Google Photos, and optionally import into a self-hosted service like Immich.
+This is a new GUI tool written in Rust with the intention of helping users transfer photos away from popular cloud providers, like Google Photos, and optionally import into a self-hosted service like Immich.
 
 The scope of this project could change at any time, but right now I'm thinking of a feature set like this:
 
