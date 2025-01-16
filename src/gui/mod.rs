@@ -86,7 +86,7 @@ pub fn run() {
         /* render */
         let draw_data = imgui.render();
 
-        //unsafe { renderer.gl_context().clear(glow::COLOR_BUFFER_BIT) };
+        unsafe { renderer.gl_context().clear(glow::COLOR_BUFFER_BIT) };
         renderer.render(draw_data).unwrap();
 
         window.gl_swap_window();
