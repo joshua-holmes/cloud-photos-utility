@@ -9,6 +9,8 @@ use sdl2::{
     video::{GLProfile, Window},
 };
 
+mod test;
+
 // Create a new glow context.
 fn glow_context(window: &Window) -> glow::Context {
     unsafe {
@@ -71,8 +73,12 @@ pub fn run() {
             /* pass all events to imgui platfrom */
             platform.handle_event(&mut imgui, &event);
 
-            if let Event::Quit { .. } = event {
-                break 'main;
+            match event {
+                Event::Quit { .. } => {
+                    break 'main;
+                },
+                Event::MouseMotion { .. } => {},
+                _ => println!("EVENT => {:?}", event),
             }
         }
 
@@ -81,7 +87,7 @@ pub fn run() {
 
         let ui = imgui.new_frame();
         /* create imgui UI here */
-        ui.show_demo_window(&mut true);
+        test::show_window(ui);
 
         /* render */
         let draw_data = imgui.render();
