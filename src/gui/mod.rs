@@ -10,6 +10,7 @@ use sdl2::{
 };
 
 mod test;
+mod styles;
 
 // Create a new glow context.
 fn glow_context(window: &Window) -> glow::Context {
@@ -60,6 +61,7 @@ pub fn run() {
     imgui
         .fonts()
         .add_font(&[imgui::FontSource::DefaultFontData { config: None }]);
+    styles::dracula::context_patch(&mut imgui);
 
     /* create platform and renderer */
     let mut platform = SdlPlatform::new(&mut imgui);
