@@ -10,7 +10,7 @@ use sdl2::{
 };
 
 mod test;
-mod styles;
+mod style;
 
 // Create a new glow context.
 fn glow_context(window: &Window) -> glow::Context {
@@ -67,7 +67,7 @@ pub fn run() {
                 config: None,
             }
         ]);
-    styles::dracula::style_patch(imgui.style_mut());
+    style::patch(imgui.style_mut());
 
     /* create platform and renderer */
     let mut platform = SdlPlatform::new(&mut imgui);
