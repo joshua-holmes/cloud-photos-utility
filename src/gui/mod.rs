@@ -57,11 +57,17 @@ pub fn run() {
     imgui.set_ini_filename(None);
     imgui.set_log_filename(None);
 
-    /* setup platform and renderer, and fonts to imgui */
+    /* setup platform and renderer, fonts, and style for imgui */
     imgui
         .fonts()
-        .add_font(&[imgui::FontSource::DefaultFontData { config: None }]);
-    styles::dracula::context_patch(&mut imgui);
+        .add_font(&[
+            imgui::FontSource::TtfData {
+                data: include_bytes!("fonts/Roboto/static/Roboto-Regular.ttf"),
+                size_pixels: 24.,
+                config: None,
+            }
+        ]);
+    styles::dracula::style_patch(imgui.style_mut());
 
     /* create platform and renderer */
     let mut platform = SdlPlatform::new(&mut imgui);
@@ -79,8 +85,9 @@ pub fn run() {
                 Event::Quit { .. } => {
                     break 'main;
                 },
+                // TODO: handle events
                 Event::MouseMotion { .. } => {},
-                _ => println!("EVENT => {:?}", event),
+                _ => {} //println!("EVENT => {:?}", event),
             }
         }
 
